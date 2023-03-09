@@ -1,28 +1,30 @@
-/*                                                                                                                                    
- * File: 100-is_palindrome.c                                                                                                          
- * Auth: Olakunle Paul                                                                                                                         
- */                                                                                                                                   
-                                                                                                                                      
-#include "main.h"                                                                                                                     
-                                                                                                           
-int find_strlen(char *s);                                                                                                             
-int check_palindrome(char *s, int len, int index);                                                                                    
-int is_palindrome(char *s);                                                                                                                                     
-/**                                                                                                                                   
- * find_strlen - Returns the length of a string.                                                                                      
- * @s: The string to be measured.                                                                                                     
- *                                                                                                                                    
- * Return: The length of the string.                                                                                                  
- */                                                                                                                                   
-int find_strlen(char *s)                                                                                                              
-{                                                                                                                                     
-        int len = 0;                                                                                                                  
-                                                                                                                                      
-        if (*(s + len))                                                                                                               
-        {                                                                                                                             
-                len++;                                                                                                                
-                len += find_strlen(s + len);                                                                                          
-        }                                                                                                                             
-                                                                                                                                      
-        return (len);                                                                                                                 
-}
+#include "main.h"
+
+/**
+ * wildcmp - Compare strings
+ * @s1: pointer to string params
+ * @s2: pointer to string params
+ * Return: 0
+ */
+
+int wildcmp(char *s1, char *s2)
+{
+	if (*s1 == '\0')
+	{
+		if (*s2 != '\0' && *s2 == '*')
+		{
+			return (wildcmp(s1, s2 + 1));
+		}
+		return (*s2 == '\0');
+	}
+
+	if (*s2 == '*')
+	{
+		return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
+	}
+	else if (*s1 == *s2)
+	{
+		return (wildcmp(s1 + 1, s2 + 1));
+	}
+	return (0);
+}                                                          
