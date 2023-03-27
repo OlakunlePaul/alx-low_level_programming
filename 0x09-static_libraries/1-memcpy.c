@@ -1,31 +1,21 @@
 #include "main.h"
-
 /**
- * *_memcpy - function declaration
- * @dest: destination address
- * @src: source address
- * @n: number of times
- * Return: sring
+ *_memcpy - a function that copies memory area
+ *@dest: memory where is stored
+ *@src: memory where is copied
+ *@n: number of bytes
+ *
+ *Return: copied memory with n byted changed
  */
-
-char *_memcpy(char *dest, char *src, unsigned int n);
-
-/**
- * *_memcpy - function definition
- * @dest: the destination address
- * @src: the source address
- * @n: number of times to copy
- * Description: copies the src to dest n times
- * Return: copied string
- */
-
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
-	unsigned int index;
+	int r = 0;
+	int i = n;
 
-	for (index = 0; index < n; index++)
+	for (; r < i; r++)
 	{
-		dest[index] = src[index];
+		dest[r] = src[r];
+		n--;
 	}
 	return (dest);
 }
